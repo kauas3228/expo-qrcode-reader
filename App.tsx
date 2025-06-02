@@ -73,6 +73,20 @@ export default function App() {
             }
           }}
           />
+
+          {/* Centralize Qrcode */}
+          
+          <View style={styles.qrCodeCentralizeBorderContainer}>
+            <View style={styles.qrCodeCentralizeBorderLeftContainer}>
+              <View style={styles.qrCodeCentralizeBorderLeftTop}></View>
+              <View style={styles.qrCodeCentralizeBorderLeftBottom}></View>
+            </View>
+            <View style={styles.qrCodeCentralizeBorderRightContainer}>
+              <View style={styles.qrCodeCentralizeBorderRightTop}></View>
+              <View style={styles.qrCodeCentralizeBorderRightBottom}></View>
+            </View>
+          </View>
+          {/* Cancel Buttom */}
           <View style={styles.footer}>
               <TouchableOpacity style={styles.cancelButton} onPress={() => setModalIsVisible(false)}>
                   <Text style={styles.ButtonText}>Cancel</Text>
@@ -107,6 +121,62 @@ const styles = StyleSheet.create({
     backgroundColor: '#F93827',
     alignItems: 'center',
     paddingBlock: 18
+  },
+  qrCodeCentralizeBorderContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: [{ translateX: -150 }, { translateY: -150 }],
+    flexDirection: 'row',
+    gap: 33
+  },
+  qrCodeCentralizeBorderLeftContainer: {
+    flexDirection: 'column',
+    gap: 33
+  },
+  qrCodeCentralizeBorderLeftTop: {
+    width: 125,
+    height: 125,
+    borderTopColor: '#fff',
+    borderLeftColor: '#fff',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderWidth: 8,
+    borderRadius: 12
+  },
+  qrCodeCentralizeBorderLeftBottom: {
+    width: 125,
+    height: 125,
+    borderBottomColor: '#fff',
+    borderLeftColor: '#fff',
+    borderRightColor: 'transparent',
+    borderTopColor: 'transparent',
+    borderWidth: 8,
+    borderRadius: 12
+  },
+  qrCodeCentralizeBorderRightContainer: {
+    flexDirection: 'column',
+    gap: 33
+  },
+  qrCodeCentralizeBorderRightTop: {
+    width: 125,
+    height: 125,
+    borderTopColor: '#fff',
+    borderRightColor: '#fff',
+    borderLeftColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderWidth: 8,
+    borderRadius: 12
+  },
+  qrCodeCentralizeBorderRightBottom: {
+    width: 125,
+    height: 125,
+    borderBottomColor: '#fff',
+    borderRightColor: '#fff',
+    borderLeftColor: 'transparent',
+    borderTopColor: 'transparent',
+    borderWidth: 8,
+    borderRadius: 12
   },
   footer: {
     position: 'absolute',

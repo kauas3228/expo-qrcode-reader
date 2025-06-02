@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { StyleSheet, Button, View, Modal, Alert } from 'react-native';
+import { StyleSheet, Button, View, Modal, Alert, Linking } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 
 
@@ -25,9 +25,19 @@ export default function App() {
   }
 
 
-  const handleQRCodeRead = (data: string) => {
+  const handleQRCodeRead = async (data: string) => {
     setModalIsVisible(false);
-    Alert.alert("QrCode data:", data);
+    // checks for a link
+    if(data.startsWith('https://') || data.startsWith('http://')) {
+      try {
+        await Linking.openURL(data);
+      } catch (error) {
+        Alert.alert("Error", "Unable to open link");
+        console.log(error);
+      }
+    }else{
+      Alert.alert("QrCode data:", data);
+    }
   }
 
   return (

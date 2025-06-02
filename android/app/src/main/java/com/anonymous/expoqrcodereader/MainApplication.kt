@@ -1,4 +1,4 @@
-package com.expoqrcodereader
+package com.anonymous.expoqrcodereader
 
 import android.app.Application
 import android.content.res.Configuration

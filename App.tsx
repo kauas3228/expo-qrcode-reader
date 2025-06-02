@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { StyleSheet, Button, View, Modal, Alert, Linking } from 'react-native';
+import { StyleSheet, Button, View, Modal, Alert, Linking, TouchableOpacity, Text } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 
 
@@ -27,7 +27,7 @@ export default function App() {
 
   const handleQRCodeRead = async (data: string) => {
     setModalIsVisible(false);
-    
+
     // checks for a link
     if(data.startsWith('https://') || data.startsWith('http://')) {
       try {
@@ -59,7 +59,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-        <Button title='Read QRCode' onPress={handleOpenCamera}></Button>
+        <TouchableOpacity style={styles.readButton} onPress={handleOpenCamera}>
+          <Text style={styles.ButtonText}>Read QRCode</Text>
+        </TouchableOpacity>
         <Modal visible={modalIsVisible} style={{flex: 1}}>
           <CameraView 
           style={{flex: 1}} 
@@ -72,7 +74,9 @@ export default function App() {
           }}
           />
           <View style={styles.footer}>
-            <Button title='Cancel' onPress={() => setModalIsVisible(false)} />
+              <TouchableOpacity style={styles.cancelButton} onPress={() => setModalIsVisible(false)}>
+                  <Text style={styles.ButtonText}>Cancel</Text>
+              </TouchableOpacity>
           </View>
         </Modal>
 
@@ -87,10 +91,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  readButton: {
+    paddingBlock: 22,
+    paddingHorizontal: 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#16610E'
+  },
+  ButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 18
+  },
+  cancelButton: {
+    backgroundColor: '#F93827',
+    alignItems: 'center',
+    paddingBlock: 18
+  },
   footer: {
     position: 'absolute',
     bottom: 32,
     left: 32,
     right: 32
-  }
+  },
 });

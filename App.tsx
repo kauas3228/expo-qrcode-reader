@@ -35,9 +35,25 @@ export default function App() {
         Alert.alert("Error", "Unable to open link");
         console.log(error);
       }
-    }else{
-      Alert.alert("QrCode data:", data);
+      return
     }
+    // checks for a Wifi
+    
+    if(data.startsWith('WIFI:')) {
+      const regex = "/WIFI:T:(.*?);S:(.*?);P:(.*?);/";
+      const match = data.match(regex);
+
+      if(match){
+        const type = match[1]
+        const ssid = match[2]
+        const password = match[3]
+
+        Alert.alert("Wifi detected: ", `SSID: ${ssid} \n Senha: ${password} \n type: ${type}`)
+
+      }
+    }
+
+      Alert.alert("QrCode data:", data);
   }
 
   return (

@@ -27,6 +27,7 @@ export default function App() {
 
   const handleQRCodeRead = async (data: string) => {
     setModalIsVisible(false);
+    
     // checks for a link
     if(data.startsWith('https://') || data.startsWith('http://')) {
       try {

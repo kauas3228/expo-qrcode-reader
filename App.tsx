@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { StyleSheet, Button, View, Modal, Alert, Linking, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Modal, Alert, Linking, TouchableOpacity, Text } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 
 
